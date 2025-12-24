@@ -50,8 +50,10 @@
     .container{width:100%;max-width:1100px}
     header{position:sticky;top:18px;z-index:40;display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding:10px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.03)}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:grid;place-items:center;font-weight:800;color:white;font-size:20px;box-shadow:0 6px 18px rgba(2,6,23,0.6);overflow:hidden;padding:0}
-  .logo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:12px}
+    .logo{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:grid;place-items:center;font-weight:800;color:white;font-size:20px;box-shadow:0 8px 24px rgba(0,0,0,0.15);overflow:hidden;padding:0;animation:logoFadeIn 0.8s ease-out,float 3s ease-in-out infinite;transition:transform 0.3s ease,box-shadow 0.3s ease;position:relative}
+  .logo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+    .logo:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 32px rgba(0,0,0,0.2)}
+    .logo::after{content:'';position:absolute;top:-6px;left:-6px;right:-6px;bottom:-6px;border:3px solid #ffff00;border-radius:50%;box-shadow:0 0 15px #ffff00,0 0 30px #ffff00,0 0 45px #ffff00;animation:rotateRing 4s linear infinite,flicker 1.5s ease-in-out infinite}
     .brand h1{font-size:18px;margin:0}
     .nav{display:flex;gap:12px}
     .nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px}
@@ -61,20 +63,31 @@
 
     main{background:linear-gradient(180deg, rgba(223, 8, 8, 0.02), transparent); padding:28px;border-radius:18px;box-shadow:0 20px 50px rgba(2,6,23,0.6);}
 
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+    .hero{display:grid;grid-template-columns:1fr 280px;gap:28px;align-items:start}
     .intro h2{margin:0;font-size:32px}
     .intro p{color:var(--muted);line-height:1.6;margin-top:12px}
     .cta{margin-top:18px}
     .btn{display:inline-block;padding:10px 16px;border-radius:12px;font-weight:700;text-decoration:none;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;box-shadow:0 8px 20px rgba(12,8,40,0.5)}
     .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
 
+    .rautix-btn{display:inline-block;padding:12px 20px;border-radius:20px;font-weight:700;text-decoration:none;background:linear-gradient(90deg,#7c3aed,#185494);color:white;font-size:18px;box-shadow:0 0 10px rgba(124,58,237,0.5),0 0 20px rgba(24,84,148,0.3);animation:pulse 2s ease-in-out infinite;transition:transform 0.3s ease,box-shadow 0.3s ease}
+    .rautix-btn:hover{transform:scale(1.05) translateY(-5px);box-shadow:0 0 20px rgba(124,58,237,0.7),0 0 40px rgba(24,84,148,0.5)}
+
     .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:14px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.03);}
 
     .profile{display:flex;flex-direction:column;gap:12px;align-items:center}
+    .avatar{width:140px;height:140px;border-radius:50%;overflow:hidden;position:relative;transition:transform 0.3s ease}
+    .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .avatar:hover{transform:translateY(-4px)}
+    .avatar::after{content:'';position:absolute;top:-6px;left:-6px;right:-6px;bottom:-6px;border:3px solid #ffff00;border-radius:50%;box-shadow:0 0 15px #ffff00,0 0 30px #ffff00,0 0 45px #ffff00;animation:rotateRing 4s linear infinite,flicker 1.5s ease-in-out infinite}
     /* .avatar{width:160px;height:160px;border-radius:20px;overflow:hidden;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent1),var(--accent2));font-size:48px;font-weight:800} */
     .stats{display:flex;gap:12px;margin-top:8px}
     .stat{padding:10px 12px;border-radius:12px;background:var(--glass);text-align:center}
     .stat strong{display:block}
+
+    .badges{display:flex;gap:8px;justify-content:center;margin-top:10px}
+    .badge{padding:6px 12px;border-radius:20px;font-weight:600;font-size:12px;transition:transform 0.3s ease;background:linear-gradient(90deg,#ffd700,#ffed4e);color:black}
+    .badge:hover{transform:scale(1.05)}
 
     section{margin-top:22px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
@@ -100,6 +113,11 @@
   .profile-name{font-weight:800;font-size:16px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;position:relative;display:inline-block;padding:6px 10px;border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(2,6,23,0.25)}
   .profile-name::after{content:'';position:absolute;left:-120%;top:0;width:40%;height:100%;background:linear-gradient(90deg,rgba(255,255,255,0.16),rgba(255,255,255,0.06),rgba(255,255,255,0.16));transform:skewX(-20deg);animation:profile-shine 2.8s ease-in-out infinite}
   @keyframes profile-shine{0%{left:-120%}50%{left:120%}100%{left:120%}}
+  @keyframes logoFadeIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @keyframes rotateRing{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  @keyframes flicker{0%,100%{box-shadow:0 0 15px #ffff00,0 0 30px #ffff00,0 0 45px #ffff00}50%{box-shadow:0 0 10px #ffff00,0 0 20px #ffff00,0 0 30px #ffff00}}
+  @keyframes pulse{0%,100%{box-shadow:0 0 10px rgba(124,58,237,0.5),0 0 20px rgba(24,84,148,0.3)}50%{box-shadow:0 0 20px rgba(124,58,237,0.7),0 0 40px rgba(24,84,148,0.5)}}
   .profile-name:hover,.profile-name:focus{transform:translateY(-4px) scale(1.02);transition:transform .25s cubic-bezier(.2,.9,.2,1);outline:none}
   @media (prefers-reduced-motion:reduce){.profile-name::after{animation:none}.profile-name{transition:none}}
 
@@ -161,6 +179,7 @@
         <div>
              <h1>Rahul Kumar Singh</h1>
           <div class="muted" style="font-size:13px">Designer • Developer • AI & Data Enthusiast.</div>
+          <div class="muted" style="font-size:13px;margin-top:6px">Founder & CEO of Rautix Code</div>
         </div>
       </div>
 
@@ -181,17 +200,18 @@
       <div class="hero">
         <div class="intro">
           <h2 class="fade-up stagger-1">Hi, I'm <span class="typing" id="typed">Rahul</span></h2>
-          <p class="fade-up stagger-2">I build clean, modern websites and simple apps. I love taking ideas from concept to reality through design, code and curiosity.</p>
+          <p class="fade-up stagger-2">I build modern websites and intuitive apps, turning ideas into reality. I combine thoughtful design, clean code, and curiosity to create seamless, user-friendly experiences that make an impact.</p>
 
           <div class="cta fade-up stagger-3">
             <a class="btn" href="#contact">Get in touch</a>
             <a class="btn secondary" href="#projects" style="margin-left:10px">See projects</a>
+            <a class="btn rautix-btn" href="#" style="margin-left:10px">Rautix Code</a>
           </div>
 
           <section id="about">
             <div style="margin-top:18px" class="card">
               <h3 style="margin:0">About me</h3>
-              <p style="margin-top:8px;color:var(--muted)">I am Rahul a passionate developer from India. I focus on front-end development, UI/UX and building polished web experiences. I enjoy turning ideas into fast, usable products.</p>
+              <p style="margin-top:8px;color:var(--muted)">I am Rahul Kumar Singh, Founder & CEO of Rautix Code, with 4 years of coding experience. I build modern websites and intuitive apps, turning ideas into reality. I combine thoughtful design, clean code, and curiosity to create seamless, user-friendly experiences that make an impact.</p>
               <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
                 <a class="btn" href="/resume.pdf" download>Download Resume</a>
                 <a class="btn secondary" href="#contact">Hire me</a>
@@ -202,7 +222,7 @@
         </div>
 
         <aside class="profile card">
-          <div class="avatar" aria-hidden="true"></div>
+          <div class="avatar"><img src="pf.png" alt="Rahul Kumar Singh"></div>
             <div style="text-align:center">
               <div class="profile-name" tabindex="0">Rahul Kumar Singh</div>
               <div class="muted" style="font-size:13px">
@@ -218,6 +238,10 @@
                 <strong style="font-size:18px;display:block">8+</strong>
                 <span class="muted" style="font-size:12px">Projects</span>
               </div>
+            </div>
+
+            <div class="badges">
+              <div class="badge">4 Years Coding Experience</div>
             </div>
 
           <div style="display:flex;gap:8px;margin-top:10px">
@@ -332,6 +356,17 @@
         Rautix Code Grateful for your visit. Thank you!
       </footer>
     </main>
+
+    <!-- Chatbot -->
+    <div id="chatbot-button" class="chatbot-btn">💬</div>
+    <div id="chatbot-window" class="chatbot-window" style="display:none;">
+      <div class="chatbot-header">Portfolio Assistant</div>
+      <div id="chat-messages" class="chat-messages"></div>
+      <div class="chat-input-area">
+        <input id="chat-input" type="text" placeholder="Ask me anything...">
+        <button id="chat-send">Send</button>
+      </div>
+    </div>
 
   </div>
 
@@ -489,12 +524,160 @@
     // run once and refresh every 30 seconds (every minute would be fine) to keep status accurate
     updateOpenStatus();
     setInterval(updateOpenStatus, 30000);
+
+    // Chatbot
+    const chatbotBtn = document.getElementById('chatbot-button');
+    const chatbotWin = document.getElementById('chatbot-window');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatMessages = document.getElementById('chat-messages');
+    chatbotBtn.addEventListener('click', () => {
+      if (chatbotWin.style.display === 'none' || chatbotWin.style.display === '') {
+        chatbotWin.style.display = 'flex';
+        if (chatMessages.children.length === 0) {
+          addMessage("Hello! I'm Rahul's portfolio assistant. Ask me about his skills, projects, or how to get in touch.", 'bot');
+        }
+      } else {
+        chatbotWin.style.display = 'none';
+      }
+    });
+    function addMessage(text, sender) {
+      const msg = document.createElement('div');
+      msg.className = sender === 'user' ? 'user-msg' : 'bot-msg';
+      msg.textContent = text;
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    chatSend.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+    function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      addMessage(text, 'user');
+      chatInput.value = '';
+      setTimeout(() => {
+        const response = getResponse(text);
+        addMessage(response, 'bot');
+      }, 500);
+    }
+    function getResponse(msg) {
+      msg = msg.toLowerCase();
+      if (msg.includes('skill') || msg.includes('skills')) {
+        return "Rahul excels in HTML/CSS (90%), JavaScript (85%), React (75%), and Node.js (70%). He's also passionate about AI and data.";
+      }
+      if (msg.includes('project') || msg.includes('projects')) {
+        return "Check out his featured projects like DESISTER (a sleek portfolio site), a CRUD web app, and a design system library. Visit the Projects section for more!";
+      }
+      if (msg.includes('service') || msg.includes('services')) {
+        return "Rahul offers front-end development, UI/UX design, and building polished web experiences. He turns ideas into fast, usable products.";
+      }
+      if (msg.includes('availability') || msg.includes('available')) {
+        return "Rahul is generally available from 7 AM to 10 PM (local time). Check the status badge on the site for real-time updates.";
+      }
+      if (msg.includes('contact') || msg.includes('email') || msg.includes('reach')) {
+        return "Reach out via email at rahuroy64984@gmail.com or connect on LinkedIn/GitHub. You can also use the contact form on the site.";
+      }
+      if (msg.includes('hello') || msg.includes('hi')) {
+        return "Hi there! I'm Rahul's portfolio assistant. How can I help you today?";
+      }
+      return "I'm here to help with questions about Rahul's skills, projects, services, availability, or contact info. What would you like to know?";
+    }
+
   </script>
 
   <!-- optional lightweight particle background (CSS only) -->
   <style>
     /* floating orbs */
     body::before{content:'';position:fixed;left:-10%;top:-10%;width:1200px;height:1200px;background:radial-gradient(circle at 20% 20%, rgba(124,58,237,0.06), transparent 20%), radial-gradient(circle at 80% 80%, rgba(6,182,212,0.04), transparent 20%);pointer-events:none;z-index:0}
+
+    /* Chatbot styles */
+    .chatbot-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: var(--accent1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
+      font-size: 24px;
+    }
+    .chatbot-window {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      height: 400px;
+      background: var(--card);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .chatbot-header {
+      padding: 10px;
+      background: var(--glass);
+      border-radius: 12px 12px 0 0;
+      text-align: center;
+      font-weight: bold;
+      color: var(--text);
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      color: var(--text);
+    }
+    .chat-input-area {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    #chat-input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: transparent;
+      color: var(--text);
+      border-radius: 6px;
+    }
+    #chat-send {
+      margin-left: 5px;
+      padding: 8px 12px;
+      background: var(--accent1);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .user-msg {
+      text-align: right;
+      margin: 5px 0;
+      padding: 5px 10px;
+      background: var(--accent1);
+      border-radius: 10px;
+      color: white;
+      max-width: 80%;
+      margin-left: auto;
+    }
+    .bot-msg {
+      text-align: left;
+      margin: 5px 0;
+      padding: 5px 10px;
+      background: var(--glass);
+      border-radius: 10px;
+      max-width: 80%;
+    }
+
   </style>
 </body>
 </html>
